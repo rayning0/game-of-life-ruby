@@ -15,3 +15,6 @@ https://github.com/jlnr/gosu/wiki/Ruby-Tutorial
 2. Text version, using black and white Unicode characters
 
 Please try both of them!
+
+See YouTube video of my game:
+https://www.youtube.com/watch?v=WsJ4qKSq_Fc
