@@ -20,5 +20,5 @@ See YouTube video of my game:
 https://www.youtube.com/watch?v=WsJ4qKSq_Fc
 
 See my simpler, no-frills version of Game of Life:
-https://github.com/rayning0/game-of-life-ruby/blob/master/lib/gol-simple.rb
-https://github.com/rayning0/game-of-life-ruby/blob/master/spec/gol-simple_spec.rb
+<p>https://github.com/rayning0/game-of-life-ruby/blob/master/lib/gol-simple.rb</p>
+<p>https://github.com/rayning0/game-of-life-ruby/blob/master/spec/gol-simple_spec.rb</p>
