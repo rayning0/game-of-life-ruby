@@ -38,7 +38,7 @@ class GameWindow < Gosu::Window
         (col + 1) * dx - 1, (row + 1) * dy + 19, color)
     end
 
-    live_cells = game.world.live_cells
+    live_cells = game.world.live_cells.count
 
     # speed (sound pitch) on scale 0-100%
     # more live cells => higher pitched sound

@@ -1,6 +1,6 @@
-require 'io/wait'
+# Conway's Game of Life
 
-# Game of Life board
+# the whole game board
 class World
   attr_reader :rows, :cols, :grid, :cells
 
@@ -43,7 +43,7 @@ class World
   end
 end
 
-# each individual square on board
+# each individual square on the board
 class Cell
   attr_reader :x, :y
   attr_accessor :alive
@@ -82,7 +82,7 @@ class Game
   end
 
   def tick
-    next_live_cells, next_dead_cells = [], []
+    next_dead_cells, next_live_cells = [], []
 
     world.cells.each do |cell|
       neighbors = world.live_neighbors_of(cell).count
@@ -101,72 +101,5 @@ class Game
 
     next_dead_cells.each { |cell| cell.dies }
     next_live_cells.each { |cell| cell.lives }
-  end
-end
-
-# plain text output in Terminal, w/o sound
-class Window
-  ALIVE = "\u2751".encode('utf-8')  # white square
-  DEAD = "\u2588".encode('utf-8')   # black square
-
-  attr_reader :width, :height, :game, :dx, :dy, :cols, :rows, :title
-
-  def initialize(width, height)
-    @width, @height = width, height
-    @cols, @rows = width, height
-    @title = "Raymond Gan's Game of Life"
-    @gen = 1
-
-    @game = Game.new(World.new(@rows, @cols))
-    @game.world.randomly_populate
-  end
-
-  def update
-    game.tick
-    @gen += 1
-  end
-
-  def display
-    puts title.center(width * 2)
-    puts "Generation: #{@gen}  Live cells: #{game.world
-      .live_cells.count}".center(width * 2)
-
-    rows.times do |row|
-      cols.times do |col|
-        cell = game.world.grid[row][col]
-        text = cell.alive? ? ALIVE : DEAD
-        print "#{text} "
-      end
-      puts
-    end
-  end
-
-  def run
-    loop do
-      system('clear') # clears terminal screen
-      display
-      input = char_if_pressed
-
-      if input == ' ' # space bar restarts game
-        @gen = 0
-        game.world.randomly_populate
-      end
-
-      sleep(0.05)
-      update
-      break if input == "\e" # ESC key quits
-    end
-  end
-
-  private
-
-  def char_if_pressed # captures background key press
-    begin
-      system('stty raw -echo') # turn raw input on
-      input = $stdin.getc if $stdin.ready?
-      input.chr if input
-    ensure
-      system('stty -raw echo') # turn raw input off
-    end
   end
 end

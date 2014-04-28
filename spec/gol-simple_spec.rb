@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'gol'
+require 'gol-simple'
 
 describe 'Game of Life' do
   describe World do
