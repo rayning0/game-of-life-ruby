@@ -4,14 +4,13 @@ require 'gol-simple'
 describe 'Game of Life' do
   describe World do
     let(:world) { World.new }
-    it 'has these methods' do
-      expect(world).to respond_to(:rows)
-      expect(world).to respond_to(:cols)
-      expect(world).to respond_to(:grid)
-      expect(world).to respond_to(:cells)
-      expect(world).to respond_to(:live_cells)
-      expect(world).to respond_to(:live_neighbors_of)
-      expect(world).to respond_to(:randomly_populate)
+    describe 'has these methods' do
+      it { should respond_to(:cols) }
+      it { should respond_to(:grid) }
+      it { should respond_to(:cells) }
+      it { should respond_to(:live_cells) }
+      it { should respond_to(:live_neighbors_of) }
+      it { should respond_to(:randomly_populate) }
     end
 
     it 'creates a 2-D array of arrays, a grid of Cell objects' do
@@ -75,12 +74,12 @@ describe 'Game of Life' do
 
   describe Cell do
     let(:cell) { Cell.new }
-    it 'has these methods' do
-      expect(cell).to respond_to(:alive)
-      expect(cell).to respond_to(:alive?)
-      expect(cell).to respond_to(:dead?)
-      expect(cell).to respond_to(:lives)
-      expect(cell).to respond_to(:dies)
+    describe 'has these methods' do
+      it { should respond_to(:alive) }
+      it { should respond_to(:alive?) }
+      it { should respond_to(:dead?) }
+      it { should respond_to(:lives) }
+      it { should respond_to(:dies) }
     end
 
     it 'should initialize properly' do
@@ -107,10 +106,10 @@ describe 'Game of Life' do
   describe Game do
     let(:game) { Game.new }
     let(:world) { World.new }
-    it 'has these methods' do
-      expect(game).to respond_to(:world)
-      expect(game).to respond_to(:seeds)
-      expect(game).to respond_to(:tick)
+    describe 'has these methods' do
+      it { should respond_to(:world) }
+      it { should respond_to(:seeds) }
+      it { should respond_to(:tick) }
     end
 
     it 'initializes properly' do
