@@ -3,13 +3,5 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.color_enabled = true
   config.order = 'default'
-end
-
-def capture_stdout(&blk)
-  old = $stdout
-  $stdout = fake = StringIO.new
-  blk.call
-  fake.string
-  ensure
-  $stdout = old
+  config.formatter = :documentation
 end
