@@ -106,8 +106,8 @@ end
 
 # plain text output in Terminal, w/o sound
 class Window
-  ALIVE = "\u2751".encode('utf-8')  # white square
-  DEAD = "\u2588".encode('utf-8')   # black square
+  ALIVE = "o".encode('utf-8')
+  DEAD = ".".encode('utf-8')
 
   attr_reader :width, :height, :game, :dx, :dy, :cols, :rows, :title
 
@@ -152,7 +152,7 @@ class Window
         game.world.randomly_populate
       end
 
-      sleep(0.05)
+      sleep(1)
       update
       break if input == "\e" # ESC key quits
     end
